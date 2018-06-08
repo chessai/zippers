@@ -46,7 +46,7 @@ import Control.Lens.Lens
 import Control.Lens.Setter
 import Control.Lens.Traversal
 import Control.Lens.Type
-import Data.Functor.Apply
+import Data.Functor.Semiapplicative
 import Data.Maybe
 import Data.Monoid (Monoid(..), Last(..))
 import Data.Profunctor.Unsafe
@@ -183,7 +183,7 @@ instance Functor (Flow i b) where
   fmap f (Flow g) = Flow (f . g)
   {-# INLINE fmap #-}
 
-instance Apply (Flow i b) where
+instance Semiapplicative (Flow i b) where
   (<.>) = (<*>)
   {- INLINE (<.>) #-}
 
